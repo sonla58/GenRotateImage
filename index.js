@@ -5,7 +5,7 @@ const fs = require('fs');
 const Jimp = require('jimp');
 
 program
-  .version('1.0.0')
+  .version('1.0.4')
   .command('rotate <dir>')
   .option('-s,--scale <n>', 'Scale before rotate')
   .option('-d,--distance <n>', 'Distance degree rotate')
