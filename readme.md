@@ -5,11 +5,11 @@ A small tool to generate 360 rotated image from origin image :D
 ## Installation
 
 ```
-npm install genimage
+npm install as-gen-image
 ```
 
 ## Use
 
 ```
-GenImage rotate <file_path> -s <scale> 
+GenImage rotate <file_path> -s <scale> -d <distance>
 ```
