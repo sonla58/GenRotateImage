@@ -1,6 +1,6 @@
 {
-  "name": "GenImage",
-  "version": "1.0.0",
+  "name": "as-gen-image",
+  "version": "1.0.1",
   "description": "Generate image from origin image",
   "main": "index.js",
   "author": "Anh Son",

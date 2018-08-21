@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn link
+  /usr/local/bin/node /usr/local/bin/yarn unlink as-gen-image
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -15,7 +15,7 @@ Platform:
 
 npm manifest: 
   {
-    "name": "GenImage",
+    "name": "as-gen-image",
     "version": "1.0.0",
     "description": "Generate image from origin image",
     "main": "index.js",
@@ -24,9 +24,13 @@ npm manifest:
     "dependencies": {
       "commander": "^2.17.1",
       "jimp": "^0.3.5"
-    }
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/sonla58/GenRotateImage"
+    },
     "preferGlobal": true,
-    "bin": "./index.js"
+    "bin": "../GenImage/index.js"
   }
 
 yarn manifest: 
@@ -272,9 +276,9 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
 Trace: 
-  SyntaxError: /Volumes/Data/PetProject/GenImage/package.json: Unexpected string in JSON at position 239
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:1036:59
+  Error: No registered module found called "as-gen-image".
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:87765:17)
       at Generator.next (<anonymous>)
       at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
       at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
