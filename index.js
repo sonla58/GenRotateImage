@@ -9,14 +9,14 @@ program
   .command('rotate <dir>')
   .option('-s,--scale <n>', 'Scale before rotate')
   .option('-d,--distance <n>', 'Distance degree rotate')
-  .option('-c,--color [color]')
+  .option('-c,--color <color>', 'Color with apply to PNG result')
   .action(function (dir, cmd) {
       rotateImage(dir, cmd.scale, cmd.color, cmd.distance);
   });
   program.parse(process.argv);
 
 function rotateImage(path, scale, color, distance) {
-    console.log(">>> Starting rotate image: %j", path);
+    console.log(">>> Starting rotate image: %j with color %j", path, color);
     fs.readFile(path, function(err, data) {
         if (err) {
             console.log(err);
@@ -43,9 +43,15 @@ function rotateImage(path, scale, color, distance) {
                         rollBackScale = 4;
                     }
                     var result = image.scale(_scale).rotate(-i, true).scale(1/rollBackScale);
-                    // if (color !== 'undefined') {
-                        
-                    // }
+                    if (color !== undefined) {
+                        // let rgb = hexToRgb(color);
+                        result = result.color([
+                            // { apply: 'red', params: rgb.r },
+                            // { apply: 'green', params: rgb.g },
+                            // { apply: 'blue', params: rgb.b }
+                            { apply: 'mix', params: [color, 100] }
+                        ]);
+                    }
                     return result.write(name + i + ".png");
                 }).catch(err => {
                     console.log(err);
@@ -54,4 +60,24 @@ function rotateImage(path, scale, color, distance) {
             console.log(">>> Done");
         }
     });
+}
+
+function hexToRgb(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        let r = (c>>16)&255;
+        let g = (c>>8)&255;
+        let b = c&255;
+        return {
+            r: r,
+            g: g,
+            b: b
+        }
+    }
+    throw new Error('Bad Hex');
 }
