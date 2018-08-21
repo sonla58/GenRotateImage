@@ -1,0 +1,14 @@
+{
+  "name": "GenImage",
+  "version": "1.0.0",
+  "description": "Generate image from origin image",
+  "main": "index.js",
+  "author": "Anh Son",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.17.1",
+    "jimp": "^0.3.5"
+  },
+  "preferGlobal": true,
+  "bin": "../GenImage/index.js"
+}
